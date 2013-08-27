@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental
+END
+CFilteringJSONSerializer.h
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CFilteringJSONSerializer.h
+END
+CJSONSerialization.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CJSONSerialization.h
+END
+CJSONDeserializer_BlocksExtensions.h
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CJSONDeserializer_BlocksExtensions.h
+END
+CFilteringJSONSerializer.m
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CFilteringJSONSerializer.m
+END
+CJSONSerialization.m
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CJSONSerialization.m
+END
+CJSONDeserializer_BlocksExtensions.m
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CJSONDeserializer_BlocksExtensions.m
+END
+CJSONSerializedData.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CJSONSerializedData.h
+END
+CJSONSerializedData.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/txl_ios/!svn/ver/19/trunk/SVN_TXL_Shinemo/TongXunLu/libs/ios_api/TouchJSON/Experimental/CJSONSerializedData.m
+END

@@ -1,0 +1,23 @@
+//
+// Prefix header for all source files of the 'TongXunLu' target in the 'TongXunLu' project
+//
+
+#import <Availability.h>
+#import <QuartzCore/QuartzCore.h>
+#import "PreHeader.h"
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#ifdef DEBUG2
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+

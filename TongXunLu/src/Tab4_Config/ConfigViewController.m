@@ -1,0 +1,408 @@
+//
+//  ConfigViewController.m
+//  TongXunLu
+//
+//  Created by QuanMai on 13-3-8.
+//  Copyright (c) 2013年 QuanMai. All rights reserved.
+//
+
+#import "ConfigViewController.h"
+#import "QAlertView.h"
+#import "TokenManager.h"
+#import "CfgManager.h"
+#import "AuthViewController.h"
+#import "AboutUsViewController.h"
+#import "Reachability.h"
+#import "BaiduMobStat.h"
+
+#import "NetClient+ToPath.h"
+#import "SHMUser.h"
+#import "CustomBadge.h"
+#import "SearchIndex.h"
+#import "txlTabBarController.h"
+#import "MBProgressHUD.h"
+#import "DimensionalCodeViewController.h"
+#import "SuggestReportViewController.h"
+#import "GestureLockViewController.h"
+#import "GestureLock.h"
+#import "ViewTutorialsController.h"
+
+@interface ConfigViewController ()
+
+@end
+
+@implementation ConfigViewController
+{
+    CustomBadge *newBad;
+    CustomBadge *newBad2;
+    MBProgressHUD *hud;
+}
+
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title = @"设置";
+    }
+    return self;
+}
+-(void)swapGZIPSwitch:(UISwitch *)aswitch
+{
+    DLog("switch:%d",aswitch.on);
+    if (aswitch.on) {
+        [CfgManager setConfig:@"gzip_switch" detail:@"1"];
+    }else
+    {
+        [CfgManager setConfig:@"gzip_switch" detail:@"0"];
+    }
+}
+
+
+
+-(void)swapWifiSwitch:(UISwitch *)aswitch
+{
+    DLog("switch:%d",aswitch.on);
+    if (aswitch.on) {
+        [CfgManager setConfig:@"wifi_switch" detail:@"1"];
+    }else
+    {
+        [CfgManager setConfig:@"wifi_switch" detail:@"0"];
+    }
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [configItems count];
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"BaseCell"];
+    if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BaseCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.text = [configItems objectAtIndex:indexPath.row];
+    
+    if (indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 8) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }else{
+         cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    if (indexPath.row == 0) {
+        if ([SHMUser sharedUser].lastData&&[[SHMUser sharedUser].lastData intValue] == 0) {
+                if (!newBad) {
+                    newBad = [CustomBadge customBadgeWithString:@"new"
+                                                withStringColor:[UIColor whiteColor]
+                                                 withInsetColor:[UIColor redColor]
+                                                 withBadgeFrame:YES
+                                            withBadgeFrameColor:[UIColor whiteColor]
+                                                      withScale:0.8
+                                                    withShining:YES];
+                    [newBad setFrame:CGRectMake(280-newBad.frame.size.width, cell.contentView.frame.size.height/2-newBad.frame.size.height/2, newBad.frame.size.width, newBad.frame.size.height)];
+                    
+                }
+            [cell.contentView addSubview:newBad];
+        }else{
+            [newBad removeFromSuperview];
+        }
+    }
+    
+    if (indexPath.row == 2) {
+        //无线同步开关
+        UISwitch *aswitch = [[UISwitch alloc]initWithFrame:CGRectMake(220, 8, 40, 40)];
+        [cell addSubview:aswitch];
+       
+        [aswitch addTarget:self action:@selector(swapWifiSwitch:) forControlEvents:UIControlEventValueChanged];
+        NSString *v = [CfgManager getConfig:@"wifi_switch"];
+        aswitch.on = (v !=nil && [v isEqualToString:@"1"]);
+    }else if (indexPath.row == 4) {
+        if ([SHMUser sharedUser].lastAPP&&[[SHMUser sharedUser].lastAPP intValue] == 0) {
+            if (!newBad2) {
+                newBad2 = [CustomBadge customBadgeWithString:@"new"
+                                            withStringColor:[UIColor whiteColor]
+                                             withInsetColor:[UIColor redColor]
+                                             withBadgeFrame:YES
+                                        withBadgeFrameColor:[UIColor whiteColor]
+                                                  withScale:0.8
+                                                withShining:YES];
+                [newBad2 setFrame:CGRectMake(280-newBad2.frame.size.width, cell.contentView.frame.size.height/2-newBad2.frame.size.height/2, newBad2.frame.size.width, newBad2.frame.size.height)];                
+            }
+            [cell.contentView addSubview:newBad2];
+        }else{
+            [newBad2 removeFromSuperview];
+        }
+    }
+    
+    return cell;
+}
+
+-(id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    self.title = @"设置";
+    configItems =[[NSArray alloc] initWithObjects:@"更新数据",@"取消绑定",@"仅在wifi下同步",@"二维码分享",@"检测新版本",@"反馈意见",@"手势锁设置",@"关于我们",@"查看使用教程", nil];
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    [self.tableView setBackgroundView:nil];
+    self.tableView.backgroundColor = UIColorFromRGB(0xe1e0de);
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+ //   self.hidesBottomBarWhenPushed = YES;
+    [[BaiduMobStat defaultStat] pageviewStartWithName:self.title];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+  //   self.hidesBottomBarWhenPushed = NO;
+    [[BaiduMobStat defaultStat] pageviewEndWithName:self.title];
+}
+
+- (void)checkNew
+{
+    if (![SearchIndex sharedIndexs].orgDataVersionsStr) {
+         [[QAlertView sharedInstance] showAlertText:@"检测更新失败!" fadeTime:2];
+        return;
+    }
+    hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.labelText = @"检测更新";
+    [[NetClient sharedClient] doPath:@"post" path:@"system/checkVersion" parameters:@{@"osType":iosStr,@"appVersion":[SearchIndex sharedIndexs].appVersion,@"orgDataVersions":[SearchIndex sharedIndexs].orgDataVersionsStr} success:^(NSMutableDictionary *dic) {
+        [hud hide:YES];
+        [SHMUser sharedUser].downloadURL = dic[@"downloadURL"];
+        [SHMUser sharedUser].lastAPP = dic[@"lastAPP"];
+        [SHMUser sharedUser].lastData = dic[@"lastData"];
+        [SHMUser sharedUser].forceUpdateAPP = dic[@"forceUpdateAPP"];
+        [SHMUser sharedUser].forceUpdateData = dic[@"forceUpdateData"];
+        
+        if ([SHMUser sharedUser].lastAPP&&[[SHMUser sharedUser].lastAPP intValue] == 0&&[SHMUser sharedUser].downloadURL) {
+            [((txlTabBarController *)self.parentViewController.parentViewController) addNew];
+            if([NetClient sharedClient].r.currentReachabilityStatus == ReachableViaWiFi){
+                UIAlertViewBlock *alert = [[UIAlertViewBlock alloc] initWithTitle:@"更新提示" message:@"有新版本的app,当前为wifi网络,现在更新吗?" cancelButtonTitle:@"不，以后"
+                                                                      clickButton:^(NSInteger indexButton){
+                                                                          if (indexButton == 0) {
+                                                                              
+                                                                              
+                                                                          }
+                                                                          if (indexButton == 1) {
+                                                                              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[SHMUser sharedUser].downloadURL]];
+                                                                          }
+                                                                      } otherButtonTitles:@"好"];
+                [alert show];
+                
+            }else{
+                if ([CfgManager getConfig:@"wifi_switch"]&&[[CfgManager getConfig:@"wifi_switch"] isEqualToString:@"0"]) {
+                    [[QAlertView sharedInstance] showAlertText:@"无线网络未开启!" fadeTime:2];
+                    return;
+                }
+                UIAlertViewBlock *alert = [[UIAlertViewBlock alloc] initWithTitle:@"更新提示" message:@"有新版本的app,当前为2G或3G网络,现在更新吗?" cancelButtonTitle:@"不，以后"
+                                                                      clickButton:^(NSInteger indexButton){
+                                                                          if (indexButton == 0) {
+                                                                              [((txlTabBarController *)self.parentViewController.parentViewController) addNew];
+                                                                              
+                                                                          }
+                                                                          if (indexButton == 1) {
+                                                                              
+                                                                          }
+                                                                      } otherButtonTitles:@"好"];
+                [alert show];
+            }
+            
+        }
+        if ([SHMUser sharedUser].lastAPP&&[[SHMUser sharedUser].lastAPP intValue] == 0) {
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        }
+        
+        
+    } failure:^(NSMutableDictionary *dic) {
+        [hud hide:YES];
+        if ([dic[@"state"] isEqualToNumber:[NSNumber numberWithInt:409]]||[dic[@"state"] isEqualToNumber:[NSNumber numberWithInt:410]]) {
+            
+            [[QAlertView sharedInstance] showAlertText:dic[@"note"] fadeTime:2];
+            [CfgManager setConfig:@"updated" detail:@"0"];
+            [[TokenManager sharedInstance] setToken:@""];
+            [CfgManager setConfig:@"departmentID" detail:nil];
+            AuthViewController *auc = [[AuthViewController alloc]init];
+            [[SHMData sharedData] removeContext];
+            [self.tabBarController presentModalViewController:auc animated:NO];
+            [auc displayAuthView];
+            return;
+        }
+        [[QAlertView sharedInstance] showAlertText:dic[@"note"] fadeTime:2];
+        if ([dic[@"state"] isEqualToNumber:[NSNumber numberWithInt:304]]) {
+            [SHMUser sharedUser].downloadURL = nil;
+            [SHMUser sharedUser].lastAPP = [NSNumber numberWithInt:1];
+            [SHMUser sharedUser].lastData = [NSNumber numberWithInt:1];
+            [SHMUser sharedUser].forceUpdateAPP = [NSNumber numberWithInt:0];
+            [SHMUser sharedUser].forceUpdateData = [NSNumber numberWithInt:0];
+            [((txlTabBarController *)self.parentViewController.parentViewController) removeNew];
+        }
+         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],[NSIndexPath indexPathForRow:4 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    } withToken:YES toJson:YES isNotForm:NO parameterEncoding:AFFormURLParameterEncoding];
+}
+
+- (void)toNewloadData
+{
+    NSString *v = [CfgManager getConfig:@"wifi_switch"];
+    NSString *msg = @"";
+    Reachability *internetReachable = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = internetReachable.currentReachabilityStatus;
+    if ((v == nil || ![v isEqualToString:@"1"])) {
+        //[[QAlertView sharedInstance] showAlertText:@"当前手机可能会从2G或3G模式下载，请慎重!" fadeTime:2];
+        //return;
+        
+        if (internetStatus != ReachableViaWiFi){
+            // @"网速太慢或者没有连网，是否尝试继续?";
+            if (internetStatus == NotReachable) {
+                msg = @"网速太慢或者没有连网，是否尝试继续?";
+            }else{
+                msg = @"当前手机将会从2G或3G模式下载,确定更新吗?";
+            }
+            
+            UIAlertViewBlock *alertView = [[UIAlertViewBlock alloc] initWithTitle:@"提示" message:msg cancelButtonTitle:@"取消"
+                                                                      clickButton:^(NSInteger indexButton){
+                                                                          if (indexButton == 1) {
+                                                                              [CfgManager setConfig:@"updated" detail:@"0"];
+                                                                              
+                                                                              AuthViewController *auc = [[AuthViewController alloc]init];
+                                                                              [self presentModalViewController:auc animated:NO];
+                                                                              [auc getAllContacts:[TokenManager getToken]];
+                                                                              
+                                                                          }
+                                                                      } otherButtonTitles:@"确定"];
+            [alertView show];
+            
+            
+        }else{
+            // @"当前手机可能会从2G或3G模式下载，确定更新吗?";
+            
+            msg =  @"手机将通过wifi更新数据,确定更新吗?";
+            UIAlertViewBlock *alertView = [[UIAlertViewBlock alloc] initWithTitle:@"提示" message:msg cancelButtonTitle:@"取消"
+                                                                      clickButton:^(NSInteger indexButton){
+                                                                          if (indexButton == 1) {
+                                                                              [CfgManager setConfig:@"updated" detail:@"0"];
+                                                                              
+                                                                              AuthViewController *auc = [[AuthViewController alloc]init];
+                                                                              [self presentModalViewController:auc animated:NO];
+                                                                              [auc getAllContacts:[TokenManager getToken]];
+                                                                              
+                                                                          }
+                                                                      } otherButtonTitles:@"确定"];
+            [alertView show];
+            
+            
+            
+        }
+    }else{
+        msg = @"手机将通过wifi更新数据,确定更新吗?";
+        //在指定使用wifi的情况下，先判断wifi是否已开
+        
+        if (internetStatus != ReachableViaWiFi) [[QAlertView sharedInstance] showAlertText:@"无线网络未开启!" fadeTime:2];
+        else{
+            UIAlertViewBlock *alertView = [[UIAlertViewBlock alloc] initWithTitle:@"提示" message:msg cancelButtonTitle:@"取消"
+                                                                      clickButton:^(NSInteger indexButton){
+                                                                          if (indexButton == 1) {
+                                                                              [CfgManager setConfig:@"updated" detail:@"0"];
+                                                                              AuthViewController *auc = [[AuthViewController alloc]init];
+                                                                              [self presentModalViewController:auc animated:NO];
+                                                                              [auc getAllContacts:[TokenManager getToken]];
+                                                                              
+                                                                          }
+                                                                      } otherButtonTitles:@"确定"];
+            [alertView show];
+            
+            
+        }
+        
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[BaiduMobStat defaultStat] logEvent:@"点击" eventLabel:configItems[indexPath.row]];
+   
+    if (indexPath.row == 0){
+        
+        
+        [self toNewloadData];        
+                
+        
+    }else if (indexPath.row == 1){
+        
+        NSString *v = [CfgManager getConfig:@"wifi_switch"];
+      //  NSString *msg = @"";
+        if ((v == nil || ![v isEqualToString:@"1"])) {
+            //[[QAlertView sharedInstance] showAlertText:@"当前手机可能会从2G或3G模式下载，请慎重!" fadeTime:2];
+            //return;
+            //msg = @"当前手机可能会从2G或3G模式下载，确定更新吗?";
+        }else{
+            //msg = @"手机将通过wifi更新数据,确定更新吗?";
+        }
+        
+
+        
+        UIAlertViewBlock *alertView = [[UIAlertViewBlock alloc] initWithTitle:@"提示" message:@"确定取消绑定？" cancelButtonTitle:@"取消"
+                                                                  clickButton:^(NSInteger indexButton){
+                                                                      if (indexButton == 1) {
+                                                                          [CfgManager setConfig:@"updated" detail:@"0"];
+                                                                          [[TokenManager sharedInstance] setToken:@""];
+                                                                          [CfgManager setConfig:@"departmentID" detail:nil];
+                                                                          AuthViewController *auc = [[AuthViewController alloc]init];
+                                                                          [GestureLock sharedLock].lockKey = nil;
+                                                                          [GestureLock sharedLock].onLock = NO;
+                                                                          [self presentModalViewController:auc animated:NO];
+                                                                          [auc displayAuthView];
+
+                                                                          
+                                                                      }
+                                                                  } otherButtonTitles:@"确定"];
+        [alertView show];
+        
+        
+    }else if (indexPath.row == 2){
+//        [[QAlertView sharedInstance] showAlertText:@"调试模式启动，请重启app！" fadeTime:2];
+//        [[TokenManager sharedInstance] setToken:TESTTOKEN];
+    }
+    else if (indexPath.row == 3){
+        
+        [self.navigationController pushViewController:[[DimensionalCodeViewController alloc]init] animated:YES];
+    }
+    else if (indexPath.row == 4){
+        [self checkNew];
+    }
+    else if (indexPath.row == 5){
+        [self.navigationController pushViewController:[[SuggestReportViewController alloc] init] animated:YES];
+    }
+    else if (indexPath.row == 6){
+       [self.navigationController pushViewController:[[GestureLockViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+    }
+    
+    else if (indexPath.row == 7){
+        AboutUsViewController *aboutus = [[AboutUsViewController alloc]init];
+        aboutus.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self.navigationController.tabBarController presentModalViewController:aboutus animated:YES];
+    }else if (indexPath.row == 8){        
+        [self.navigationController pushViewController:[[ViewTutorialsController alloc]init] animated:YES];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

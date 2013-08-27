@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/txl_ios/!svn/ver/53/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking
+END
+AFHTTPClient.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/txl_ios/!svn/ver/96/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFHTTPClient.m
+END
+AFNetworking.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFNetworking.h
+END
+AFXMLRequestOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFXMLRequestOperation.h
+END
+AFNetworkActivityIndicatorManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFNetworkActivityIndicatorManager.h
+END
+UIImageView+AFNetworking.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/UIImageView+AFNetworking.h
+END
+AFXMLRequestOperation.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFXMLRequestOperation.m
+END
+AFURLConnectionOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFURLConnectionOperation.h
+END
+AFNetworkActivityIndicatorManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFNetworkActivityIndicatorManager.m
+END
+AFJSONRequestOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFJSONRequestOperation.h
+END
+UIImageView+AFNetworking.m
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/UIImageView+AFNetworking.m
+END
+AFURLConnectionOperation.m
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/txl_ios/!svn/ver/53/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFURLConnectionOperation.m
+END
+AFJSONRequestOperation.m
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFJSONRequestOperation.m
+END
+NSData+GZIP.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/NSData+GZIP.h
+END
+AFHTTPRequestOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFHTTPRequestOperation.h
+END
+AFPropertyListRequestOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFPropertyListRequestOperation.h
+END
+AFImageRequestOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFImageRequestOperation.h
+END
+NSData+GZIP.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/NSData+GZIP.m
+END
+AFHTTPRequestOperation.m
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFHTTPRequestOperation.m
+END
+AFHTTPClient.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/txl_ios/!svn/ver/96/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFHTTPClient.h
+END
+AFPropertyListRequestOperation.m
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFPropertyListRequestOperation.m
+END
+AFImageRequestOperation.m
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/libs/AFNetworking/AFImageRequestOperation.m
+END

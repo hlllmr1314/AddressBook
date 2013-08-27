@@ -1,0 +1,1 @@
+mogenerator -m /Users/macmini/Documents/SVN_TXL_Shinemo_trunk/TongXunLu/AddressBook.xcdatamodeld/AddressBook.xcdatamodel -M /Users/macmini/Documents/SVN_TXL_Shinemo_trunk/TongXunLu/data/_class -H/Users/macmini/Documents/SVN_TXL_Shinemo_trunk/TongXunLu/data/class --template-var arc=true

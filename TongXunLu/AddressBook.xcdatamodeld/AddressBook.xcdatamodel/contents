@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Department" representedClassName="Department" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="searchPersonIds" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentDept" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="subDepart" inverseEntity="Department" syncable="YES"/>
+        <relationship name="searchPersons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="superDeparts" inverseEntity="Person" syncable="YES"/>
+        <relationship name="subDepart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Department" inverseName="parentDept" inverseEntity="Department" syncable="YES"/>
+        <relationship name="subPerson" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="depart" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="chanyong" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstPinyin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstPinyin1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstPinyin2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstPinyinNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstPinyinNum1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstPinyinNum2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="homePhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="personalCellPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNum4Search" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin4Search" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="pinyinNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyinNum1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyinNum2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortNum2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="virtualCellPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workCellPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workingPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workPhone2" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="depart" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="subPerson" inverseEntity="Department" syncable="YES"/>
+        <relationship name="superDeparts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Department" inverseName="searchPersons" inverseEntity="Department" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Department" positionX="457" positionY="192" width="128" height="165"/>
+        <element name="Person" positionX="72" positionY="201" width="128" height="480"/>
+    </elements>
+</model>

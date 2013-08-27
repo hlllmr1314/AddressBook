@@ -1,0 +1,3 @@
+{"units":[{"name":"开发部","leaf":"0","subUnits":[{"name":"开发1部","leaf":"0","subUnits":[{"name":"001","leaf":"1","subUnits":[]},{"name":"002","leaf":"1","subUnits":[]},{"name":"003","leaf":"1","subUnits":[]},{"name":"004","leaf":"1","subUnits":[]}]},{"name":"开发2部","leaf":"0","subUnits":[{"name":"001","leaf":"1","subUnits":[]},{"name":"002","leaf":"1","subUnits":[]},{"name":"003","leaf":"1","subUnits":[]},{"name":"004","leaf":"1","subUnits":[]}]}]}]}
+
+

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/txl_ios/!svn/ver/73/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule
+END
+TokenManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/TokenManager.h
+END
+RegisterView.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/txl_ios/!svn/ver/16/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/RegisterView.h
+END
+AuthViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/AuthViewController.h
+END
+AuthViewController副本.m
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/txl_ios/!svn/ver/2/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/AuthViewController%E5%89%AF%E6%9C%AC.m
+END
+TokenManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/txl_ios/!svn/ver/73/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/TokenManager.m
+END
+SelectDepartmentViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/txl_ios/!svn/ver/26/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/SelectDepartmentViewController.h
+END
+SendAllCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/txl_ios/!svn/ver/13/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/SendAllCell.h
+END
+ViewControllers.storyboard
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/txl_ios/!svn/ver/96/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/ViewControllers.storyboard
+END
+RegisterView.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/txl_ios/!svn/ver/94/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/RegisterView.m
+END
+AuthViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/txl_ios/!svn/ver/103/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/AuthViewController.m
+END
+SelectDepartmentViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/txl_ios/!svn/ver/13/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/SelectDepartmentViewController.m
+END
+SendAllCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/txl_ios/!svn/ver/53/trunk/SVN_TXL_Shinemo/TongXunLu/src/authModule/SendAllCell.m
+END
